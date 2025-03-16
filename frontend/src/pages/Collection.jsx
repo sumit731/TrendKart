@@ -49,14 +49,18 @@ const Collection = () => {
   const sortProduct = () => {
     let fpCopy = filterProducts.slice();
 
+    // Sort the products based on the sortType
     switch(sortType){
       case 'low-hight':
+        // Sort the products in ascending order based on price
         setFilterProducts(fpCopy.sort((a,b) => (a.price - b.price)));
         break;
       case 'high-low':
+        // Sort the products in descending order based on price
         setFilterProducts(fpCopy.sort((a,b) => (b.price - a.price)));
         break;
       default:
+        // If the sortType is not specified, apply the filters again
         applyFilter();
         break;
     }
@@ -101,13 +105,13 @@ const Collection = () => {
             <p className="mb-3 text-sm font-medium">TYPES</p>
             <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
               <p className="flex gap-2">
-                <input className="w-3" type="checkbox" onChange={toggleSubCategory} value={'Topwear'} />Topwear
+                <input className="w-3" type="checkbox" onChange={toggleSubCategory} value={'Topwear'} />Top-wear
               </p>
               <p className="flex gap-2">
-                <input className="w-3" type="checkbox" onChange={toggleSubCategory} value={'Bottomwear'} />Bottomwear
+                <input className="w-3" type="checkbox" onChange={toggleSubCategory} value={'Bottomwear'} />Bottom-wear
               </p>
               <p className="flex gap-2">
-                <input className="w-3" type="checkbox" onChange={toggleSubCategory} value={'Winterwear'} />Winterwear
+                <input className="w-3" type="checkbox" onChange={toggleSubCategory} value={'Winterwear'} />Winter-wear
               </p>
             </div>
           </div>

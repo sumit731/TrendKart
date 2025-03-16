@@ -5,6 +5,7 @@ import connnectDB from "./config/mongodb.js";
 import connectCloudinary from "./config/cloudinary.js";
 import userRouter from "./routes/user.Route.js";
 import productRouter from "./routes/product.Route.js";
+import cartRouter from "./routes/cart.Route.js";
 
 
 //App config
@@ -20,6 +21,7 @@ app.use(cors()); //access backend from frontend
 //api endpoints
 app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
+app.use("/api/cart", cartRouter);
 
 
 app.listen(port, () => {

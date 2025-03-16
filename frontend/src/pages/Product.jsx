@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { ShopContext } from "../context/ShopContaxt";
 import { assets } from "../assets/assets";
 import RelatedProducts from "../components/RelatedProducts";
+import { ShopContext } from "../context/ShopContaxt";
 
 const Product = () => {
   const { productId } = useParams();
@@ -11,8 +11,10 @@ const Product = () => {
   const [image, setImage] = useState('');
   const [size, setSize] = useState(null)
 
-  const fetchProductData = () => {
-    const foundProduct = products.find(item => item._id === productId);
+  const fetchProductData = async () => {
+
+    const foundProduct = await products.find(item => item._id === productId);
+
     if (foundProduct) {
       setProductData(foundProduct);
       setImage(foundProduct.image[0]); // Use the first image 
@@ -20,10 +22,14 @@ const Product = () => {
   };
 
   useEffect(() => {
-    fetchProductData();
+    if (products.length > 0) {
+      fetchProductData();
+    }
   }, [productId, products]); // Added 'products' dependency
 
-  if (!productData) return <div className="opacity-0"></div>;
+  if (!productData) {
+    return <div className="opacity-0"></div>;
+  }
 
   return (
     <div className="border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100">
@@ -66,7 +72,7 @@ const Product = () => {
           <div className="flex flex-col gap-4 my-8">
             <p>Select Size</p>
             <div className="flex gap-2">
-              {productData.sizes.map((item, index) => (
+              {productData.size.map((item, index) => (
                 <button
                   key={index}
                   onClick={() => setSize(item)}
@@ -77,7 +83,7 @@ const Product = () => {
               ))}
             </div>
           </div>
-          <button onClick={()=>addToCart(productData._id,size)} className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700">ADD TO CART</button>
+          <button onClick={() => addToCart(productData._id, size)} className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700">ADD TO CART</button>
           <hr className="mt-8 sm:w-4/5" />
           <div className="text-sm text-gray-500 mt-5 flex flex-col gap-1">
             <p>100% Original product.</p>
@@ -100,9 +106,9 @@ const Product = () => {
         </div>
       </div>
 
-     {/* display related products */}
+      {/* display related products */}
 
-     <RelatedProducts category={productData.category} subCategory={productData.subCategory} />
+      <RelatedProducts category={productData.category} subCategory={productData.subCategory} />
     </div>
   );
 };
