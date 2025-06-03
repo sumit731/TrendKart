@@ -12,6 +12,7 @@ select,input,textarea{
     border-radius: 4px;
 }
 .active{
-    background-color: rgb(134 239 172);
+    background-color: rgb(29, 78, 216);
+    color: white;
     border-color: rgb(4, 66, 19);
 }

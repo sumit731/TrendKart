@@ -10,6 +10,12 @@ const productSchema = new mongoose.Schema(
     subCategory: { type: String, required: true },
     size: { type: Array, required: true },
     bestSeller: { type: Boolean },
+    // date: { type: Number, required: true },
+    date: {
+      type: Date,
+      default: Date.now, // 👈 this line adds the current date automatically
+      required: false     // 👈 make it optional
+    }
   },
   {
     timestamps: true,

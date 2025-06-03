@@ -1,10 +1,14 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 
-const connnectDB = async () => {
-  mongoose.connection.on("connected", () => {
-    console.log("Database connected");
-  });
-  await mongoose.connect(`${process.env.MONGODB_URI}/sp_ecommerce`);
-};
-
-export default connnectDB;
+const connectDB = async(req, res) => {
+  try{
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log("Connected to MongoDB");
+  }
+  catch(error){
+    console.log("MongoDB connection error: ",error);
+  }
+}
+export default connectDB;

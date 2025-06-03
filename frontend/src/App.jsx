@@ -12,6 +12,8 @@ import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import SearchBar from "./components/SearchBar"
 import { ToastContainer } from 'react-toastify';
+import Verify from "./pages/Verify"
+import Profile from "./pages/Profile"
 
 const App = () => {
   return (
@@ -29,6 +31,9 @@ const App = () => {
           <Route path="/product/:productId" element={<Product />} />
           <Route path="/collection" element={<Collection />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/verify" element={<Verify/>} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="*" element={<Home />} />
         </Routes >
         <Footer />
         <ToastContainer />
