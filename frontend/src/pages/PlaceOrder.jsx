@@ -9,7 +9,7 @@ import { toast } from "react-toastify"
 
 const PlaceOrder = () => {
   const [method, setMethod] = useState('cod');
-  const { navigate, backendUrl, token, cartItems, setCartItems, getCartAmount, delivery_fee, products } = useContext(ShopContext);
+  const { navigate, backendUrl, token, cartItems, setCartItems, getCartAmount, delivery_fee, products, VITE_RAZORPAY_KEY_ID } = useContext(ShopContext);
 
   const [fromData, setFromData] = useState({
     firstName: '',
@@ -32,7 +32,7 @@ const PlaceOrder = () => {
 
   const initPay = (order) => {
     const options = {
-      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+      key: VITE_RAZORPAY_KEY_ID,
       amount: order.amount,
       currency: order.currence,
       name: 'Order Payment',

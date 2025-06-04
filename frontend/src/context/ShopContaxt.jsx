@@ -5,10 +5,11 @@ import axios from "axios";
 
 export const ShopContext = createContext();
 
+export const VITE_RAZORPAY_KEY_ID = "ENTER YOUR KEY RAZORPAY ID"
 const ShopContextProvider = (props) => {
     const currency = "₹";
     const delivery_fee = 10;
-    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    const backendUrl = "http://localhost:8000";
     const [search, setSearch] = useState('');
     const [showSearch, setShowSearch] = useState(false);
     const [cartItems, setCartItems] = useState({});
@@ -158,7 +159,7 @@ const ShopContextProvider = (props) => {
 
     const value = {
         products, currency, delivery_fee,
-        search, setSearch, showSearch, setShowSearch, addToCart, cartItems, getCartCount, updateQuantity, getCartAmount, navigate, backendUrl, token, setToken, setCartItems
+        search, setSearch, showSearch, setShowSearch, addToCart, cartItems, getCartCount, updateQuantity, getCartAmount, navigate, backendUrl, token, setToken, setCartItems, VITE_RAZORPAY_KEY_ID
     }
     return (
         <ShopContext.Provider value={value}>
