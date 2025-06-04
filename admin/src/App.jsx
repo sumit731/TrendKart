@@ -8,7 +8,7 @@ import Login from "./components/Login"
 import { useEffect, useState } from "react"
 import { ToastContainer } from 'react-toastify';
 
-export const backendUrl = "http://localhost:8000"
+export const backendUrl = "https://trendkart.onrender.com"
 
 export const currency = "₹";
 const App = () => {

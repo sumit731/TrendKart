@@ -9,7 +9,7 @@ export const VITE_RAZORPAY_KEY_ID = "ENTER YOUR KEY RAZORPAY ID"
 const ShopContextProvider = (props) => {
     const currency = "₹";
     const delivery_fee = 10;
-    const backendUrl = "http://localhost:8000";
+    const backendUrl = "https://trendkart.onrender.com";
     const [search, setSearch] = useState('');
     const [showSearch, setShowSearch] = useState(false);
     const [cartItems, setCartItems] = useState({});
